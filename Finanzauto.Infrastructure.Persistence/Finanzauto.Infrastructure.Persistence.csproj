@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Finanzauto.Application\Finanzauto.Application.csproj" />
     <ProjectReference Include="..\Finanzauto.Dominio\Finanzauto.Dominio.csproj" />
   </ItemGroup>
 

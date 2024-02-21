@@ -1,16 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Finanzauto.Dominio.Califications;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Finanzauto.Infrastructure.Persistence.Califications
 {
-    internal class CalificationMetadata : IEntityTypeConfiguration<CalificationModel>
+    internal class CalificationMetadata : IEntityTypeConfiguration<Calification>
     {
-        public void Configure(EntityTypeBuilder<CalificationModel> builder)
+        public void Configure(EntityTypeBuilder<Calification> builder)
         {
             builder.ToTable("Califications").HasKey(p => p.Id);
 
             #region table properties
-            builder.Property(p => p.Note).HasPrecision(2,2).IsRequired();
+            builder.Property(p => p.Note).HasPrecision(4,2).IsRequired();
             #endregion table properties
 
             #region relationships

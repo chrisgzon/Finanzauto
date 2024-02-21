@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Finanzauto.Dominio.Teachers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Finanzauto.Infrastructure.Persistence.Teachers
 {
-    internal class TeacherMetadata : IEntityTypeConfiguration<TeacherModel>
+    internal class TeacherMetadata : IEntityTypeConfiguration<Teacher>
     {
-        public void Configure(EntityTypeBuilder<TeacherModel> builder)
+        public void Configure(EntityTypeBuilder<Teacher> builder)
         {
             builder.ToTable("Teachers").HasKey(p => p.Id);
 

@@ -1,13 +1,13 @@
 ﻿using Finanzauto.Dominio.Courses;
-using Finanzauto.Infrastructure.Persistence.Courses;
+using Finanzauto.Dominio.Students;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Finanzauto.Infrastructure.Persistence.Students
 {
-    internal class StudentMetadata: IEntityTypeConfiguration<StudentModel>
+    internal class StudentMetadata: IEntityTypeConfiguration<Student>
     {
-        public void Configure(EntityTypeBuilder<StudentModel> builder)
+        public void Configure(EntityTypeBuilder<Student> builder)
         {
             builder.ToTable("Students").HasKey(p => p.Id);
 
@@ -18,9 +18,9 @@ namespace Finanzauto.Infrastructure.Persistence.Students
 
             #region relationships
             builder.HasMany(s => s.Courses).WithMany(c => c.Students).UsingEntity("StudentCourse",
-            l => l.HasOne(typeof(StudentModel)).WithMany().HasForeignKey("StudentID").HasPrincipalKey(nameof(StudentModel.Id)),
-            r => r.HasOne(typeof(CourseModel)).WithMany().HasForeignKey("CourseID").HasPrincipalKey(nameof(Course.Id)),
-            j => j.HasKey("StudentID", "CourseID"));
+            l => l.HasOne(typeof(Course)).WithMany().HasForeignKey("CourseID").HasPrincipalKey(nameof(Student.Id)),
+            r => r.HasOne(typeof(Student)).WithMany().HasForeignKey("StudentID").HasPrincipalKey(nameof(Course.Id)),
+            j => j.HasKey("CourseID", "StudentID"));
             #endregion relationships
         }
     }

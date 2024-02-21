@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Finanzauto.Dominio.Courses;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Finanzauto.Infrastructure.Persistence.Courses
 {
-    internal class CourseMetadata : IEntityTypeConfiguration<CourseModel>
+    internal class CourseMetadata : IEntityTypeConfiguration<Course>
     {
-        public void Configure(EntityTypeBuilder<CourseModel> builder)
+        public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.ToTable("Courses").HasKey(p => p.Id);
 
